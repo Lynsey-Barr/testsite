@@ -15,7 +15,7 @@ def create_app(test_config=None):
         # SECRET_KEY used to keep data safe
         SECRET_KEY='super_secret_key',
         # path where sqlite database will be saved
-        DATABASE=os.path.join(app.instance_path, 'acebook.sqlite'),
+        DATABASE=os.path.join(app.instance_path, 'DATABASE_URL'),
     )
 
     if test_config is None:
