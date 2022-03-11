@@ -1,5 +1,5 @@
 # import required modules
-import sqlite3
+import PG
 
 # click is used for accessing the command line interface
 import click
@@ -10,13 +10,13 @@ from flask.cli import with_appcontext
 def get_db():
     # if there is no db currently in the global scope, connect to it
     if 'db' not in g:
-        g.db = sqlite3.connect(
+        g.db = PG.connect(
             current_app.config['DATABASE'],
             # some sort of conversion
-            detect_types=sqlite3.PARSE_DECLTYPES
+            detect_types=PG.PARSE_DECLTYPES
         )
         # returning dictionary rows (instead of tuples)
-        g.db.row_factory = sqlite3.Row
+        g.db.row_factory = PG.Row
 
     # if there is a databse in the global scope, return the database
     return g.db
